@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>IoT SecureGuard — Seguridad en Dispositivos</title>
+  <title>IoT SecureGuard — Seguridad en Dispositivos (Pixel Art)</title>
 
-  <!-- Preconnect & Fonts -->
+  <!-- Preconnect & Fonts Pixel Art -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <!-- CSS principal -->
@@ -25,13 +25,12 @@
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
   ></iframe>
 
-  <!-- Capa semitransparente para mejorar legibilidad -->
+  <!-- Capa semitransparente -->
   <div class="bg-overlay"></div>
 
-  <!-- CONTENIDO PRINCIPAL -->
   <div class="layout">
 
-    <!-- SIDEBAR IZQUIERDO: VIDEOS EDUCATIVOS -->
+    <!-- SIDEBAR IZQUIERDO (videos) -->
     <aside class="video-sidebar" id="video-sidebar">
       <button class="collapse-sidebar-btn" id="collapse-video-btn" title="Colapsar barra">
         <i class="fa-solid fa-chevron-left"></i>
@@ -49,36 +48,34 @@
 
     <!-- CONTENIDO CENTRAL -->
     <div class="main">
-      <!-- Hero -->
       <section class="hero">
         <div class="hero-badge"><i class="fa-solid fa-shield-halved"></i> Proyecto IoT — TecNM ITZACATEPEC</div>
         <h1>Seguridad en<br><span>Dispositivos IoT</span></h1>
         <p>Selecciona tu dispositivo para descubrir vulnerabilidades reales y buenas prácticas basadas en OWASP, GDPR, INCIBE y el modelo CIA.</p>
       </section>
 
-      <!-- Selector de dispositivos -->
       <section>
         <div class="section-title">
           <i class="fa-solid fa-mobile-screen-button"></i>
           Selecciona tu dispositivo
         </div>
         <div class="device-grid" id="device-grid">
-          <div class="device-card" data-device="android" tabindex="0" role="button" aria-label="Android">
+          <div class="device-card" data-device="android" tabindex="0">
             <span class="icon"><i class="fa-brands fa-android"></i></span>
             <div class="label">Android</div>
             <div class="sublabel">Smartphone</div>
           </div>
-          <div class="device-card" data-device="iphone" tabindex="0" role="button" aria-label="iPhone iOS">
+          <div class="device-card" data-device="iphone" tabindex="0">
             <span class="icon"><i class="fa-brands fa-apple"></i></span>
             <div class="label">iPhone</div>
             <div class="sublabel">iOS</div>
           </div>
-          <div class="device-card" data-device="tablet" tabindex="0" role="button" aria-label="Tablet genérica">
+          <div class="device-card" data-device="tablet" tabindex="0">
             <span class="icon"><i class="fa-solid fa-tablet-screen-button"></i></span>
             <div class="label">Tablet</div>
             <div class="sublabel">Genérica</div>
           </div>
-          <div class="device-card" data-device="smartwatch" tabindex="0" role="button" aria-label="Smartwatch">
+          <div class="device-card" data-device="smartwatch" tabindex="0">
             <span class="icon"><i class="fa-solid fa-clock"></i></span>
             <div class="label">Smartwatch</div>
             <div class="sublabel">Wearable IoT</div>
@@ -86,7 +83,6 @@
         </div>
       </section>
 
-      <!-- Panel de consejos -->
       <section>
         <div class="section-title">
           <i class="fa-solid fa-list-check"></i>
@@ -101,16 +97,14 @@
         </div>
       </section>
 
-      <!-- Test de riesgo -->
       <section class="risk-test">
         <div class="section-title">
           <i class="fa-solid fa-triangle-exclamation"></i>
           Test rápido de riesgo IoT
-          <span id="risk-question-count" style="margin-left:auto; font-size:0.7rem; font-weight:500; color:var(--color-muted); font-family:var(--font-body)"></span>
+          <span id="risk-question-count" style="margin-left:auto; font-size:0.7rem;"></span>
         </div>
-
         <div class="questions" id="questions-container">
-          <!-- Preguntas estáticas -->
+          <!-- preguntas estáticas y dinámicas (igual que antes) -->
           <div class="question-block">
             <p class="question-text">¿Usas la misma contraseña en varios dispositivos o cuentas?</p>
             <p class="q-ref"><i class="fa-solid fa-tag"></i> OWASP I1 — Weak/Guessable Passwords · CIA: Confidencialidad</p>
@@ -119,7 +113,6 @@
               <button class="btn-answer" data-q="q1" data-val="no">✓ No</button>
             </div>
           </div>
-
           <div class="question-block">
             <p class="question-text">¿Tienes las actualizaciones automáticas de firmware/SO desactivadas?</p>
             <p class="q-ref"><i class="fa-solid fa-tag"></i> OWASP I5 — Uso de componentes desactualizados · CIA: Integridad</p>
@@ -128,7 +121,6 @@
               <button class="btn-answer" data-q="q2" data-val="no">✓ No</button>
             </div>
           </div>
-
           <div class="question-block">
             <p class="question-text">¿Dejas Bluetooth y WiFi permanentemente encendidos sin usarlos?</p>
             <p class="q-ref"><i class="fa-solid fa-tag"></i> OWASP I2 — Servicios de red innecesarios · CIA: Disponibilidad</p>
@@ -137,7 +129,6 @@
               <button class="btn-answer" data-q="q3" data-val="no">✓ No</button>
             </div>
           </div>
-
           <div class="question-block">
             <p class="question-text">¿No tienes activada la autenticación en dos pasos (2FA) en tus cuentas principales?</p>
             <p class="q-ref"><i class="fa-solid fa-tag"></i> OWASP I1 — Autenticación insegura · INCIBE · CIA: Confidencialidad</p>
@@ -146,7 +137,6 @@
               <button class="btn-answer" data-q="q4" data-val="no">✓ Sí tengo 2FA</button>
             </div>
           </div>
-
           <div class="question-block">
             <p class="question-text">¿Has otorgado permisos de cámara, micrófono o ubicación a apps que no los necesitan?</p>
             <p class="q-ref"><i class="fa-solid fa-tag"></i> OWASP I6 — Privacy Concerns · GDPR Art.5 — Minimización · CIA: Confidencialidad</p>
@@ -156,13 +146,10 @@
             </div>
           </div>
 
-          <!-- Cabecera para preguntas específicas -->
           <div class="device-q-header" id="device-q-header">
             <i class="fa-solid fa-microchip"></i>
             <span id="device-q-label">Preguntas específicas del dispositivo</span>
           </div>
-
-          <!-- Preguntas dinámicas -->
           <div class="question-block device-q" id="block-q6" style="display:none">
             <p class="question-text" id="text-q6"></p>
             <p class="q-ref" id="ref-q6"></p>
@@ -171,7 +158,6 @@
               <button class="btn-answer" data-q="q6" data-val="no">✓ No</button>
             </div>
           </div>
-
           <div class="question-block device-q" id="block-q7" style="display:none">
             <p class="question-text" id="text-q7"></p>
             <p class="q-ref" id="ref-q7"></p>
@@ -182,12 +168,11 @@
           </div>
         </div>
 
-        <!-- Medidor de riesgo -->
         <div class="risk-meter">
           <div class="risk-labels">
-            <span style="color:var(--color-accent)">● Bajo</span>
-            <span style="color:var(--color-warn)">● Medio</span>
-            <span style="color:var(--color-danger)">● Alto</span>
+            <span style="color:#6b8c42">● Bajo</span>
+            <span style="color:#d98c2b">● Medio</span>
+            <span style="color:#b33b2c">● Alto</span>
           </div>
           <div class="risk-bar-track">
             <div class="risk-bar-fill" id="risk-bar"></div>
@@ -202,7 +187,7 @@
       </section>
     </div>
 
-    <!-- SIDEBAR DERECHO: REFERENCIAS -->
+    <!-- SIDEBAR DERECHO -->
     <aside class="sidebar" id="sidebar">
       <button class="collapse-sidebar-btn" id="collapse-main-btn" title="Colapsar barra">
         <i class="fa-solid fa-chevron-right"></i>
@@ -213,13 +198,12 @@
         </div>
         <div id="sources-list"></div>
         <div class="sidebar-footer-note">
-          <p><strong style="color:var(--color-accent)">Marco teórico:</strong><br>Basado en OWASP IoT Top 10 (2018), NIST IR 8228, modelo CIA, GDPR Art. 5, ENISA Baseline Security e ISO 30141.</p>
+          <p><strong>Marco teórico:</strong><br>Basado en OWASP IoT Top 10 (2018), NIST IR 8228, modelo CIA, GDPR Art. 5, ENISA Baseline Security e ISO 30141.</p>
         </div>
       </div>
     </aside>
   </div>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-title">Proyecto de Investigación — Tecnológico Nacional de México ITZACATEPEC</div>
     <div>Seguridad en Dispositivos IoT · Basado en estándares internacionales de ciberseguridad</div>
@@ -233,10 +217,10 @@
     </div>
   </footer>
 
-  <!-- MODAL PARA REFERENCIAS (documentos) -->
-  <div class="modal-overlay" id="modal" role="dialog" aria-modal="true">
+  <!-- Modal documentos -->
+  <div class="modal-overlay" id="modal" role="dialog">
     <div class="modal-box">
-      <button class="modal-close" id="modal-close" title="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+      <button class="modal-close" id="modal-close"><i class="fa-solid fa-xmark"></i></button>
       <div class="modal-source-icon" id="modal-icon"></div>
       <div class="modal-title" id="modal-title"></div>
       <a class="modal-link" id="modal-link" target="_blank" rel="noopener"></a>
@@ -248,10 +232,10 @@
     </div>
   </div>
 
-  <!-- MODAL PARA VIDEOS (reproductor flotante) -->
+  <!-- Modal videos -->
   <div class="video-modal-overlay" id="video-modal">
     <div class="video-modal-container">
-      <button class="video-modal-close" id="video-modal-close" title="Cerrar video"><i class="fa-solid fa-xmark"></i></button>
+      <button class="video-modal-close" id="video-modal-close"><i class="fa-solid fa-xmark"></i></button>
       <div class="video-modal-wrapper">
         <iframe id="video-modal-iframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>

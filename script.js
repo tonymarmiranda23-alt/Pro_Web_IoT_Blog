@@ -90,14 +90,70 @@ const VIDEOS = [
    DATOS: FUENTES BIBLIOGRÁFICAS
 ================================================================ */
 const SOURCES = [
-  { id: 'owasp', icon: 'fa-solid fa-shield', name: 'OWASP IoT Top 10', url: 'https://owasp.org/www-project-internet-of-things/', summary: 'El OWASP IoT Top 10 (2018) enumera las diez vulnerabilidades críticas...', translation: 'Proporciona el marco central de este proyecto...' },
-  { id: 'incibe', icon: 'fa-solid fa-building-shield', name: 'INCIBE — IoT y sus riesgos', url: 'https://www.incibe.es/ciudadania/blog/la-ciberseguridad-es-una-responsabilidad-de-todos-el-iot-y-sus-riesgos', summary: 'El Instituto Nacional de Ciberseguridad de España (INCIBE) publica guías...', translation: 'Fuente oficial en español que respalda las recomendaciones...' },
-  { id: 'nist', icon: 'fa-solid fa-file-shield', name: 'NIST IR 8228', url: 'https://nvlpubs.nist.gov/nistpubs/IR/2020/NIST.IR.8228.pdf', summary: 'NIST Interagency Report 8228 establece un marco para la gestión de riesgos...', translation: 'El NIST IR 8228 proporciona recomendaciones técnicas...' },
-  { id: 'iso', icon: 'fa-solid fa-certificate', name: 'ISO 30141', url: 'https://www.iso.org/standard/65662.html', summary: 'ISO/IEC 30141 es el estándar internacional de arquitectura de referencia...', translation: 'Estándar ISO que estructura la arquitectura IoT en capas...' },
-  { id: 'kaspersky', icon: 'fa-solid fa-bug-slash', name: 'Kaspersky — ¿Qué es IoT?', url: 'https://latam.kaspersky.com/resource-center/definitions/what-is-iot', summary: 'Kaspersky define el IoT como el ecosistema de dispositivos físicos...', translation: 'La investigación de Kaspersky aporta evidencia empírica...' },
-  { id: 'gdpr', icon: 'fa-solid fa-scale-balanced', name: 'GDPR — Comisión Europea', url: 'https://commission.europa.eu/law/topic/data-protection', summary: 'El Reglamento General de Protección de Datos (GDPR, 2016/679)...', translation: 'El GDPR es especialmente relevante para smartwatches...' },
-  { id: 'enisa', icon: 'fa-solid fa-earth-europe', name: 'ENISA Baseline IoT', url: 'https://www.enisa.europa.eu/topics/iot-and-smart-infrastructures/iot', summary: 'La Agencia de la UE para la Ciberseguridad (ENISA) publicó directrices...', translation: 'ENISA proporciona el marco regulatorio europeo...' },
-  { id: 'checkpoint', icon: 'fa-solid fa-network-wired', name: 'Check Point — IoT Botnet', url: 'https://blog.checkpoint.com/research/new-iot-botnet-storm-coming/', summary: 'Check Point Research documentó la emergencia de botnets IoT...', translation: 'Este informe de Check Point ilustra con evidencia forense...' }
+  {
+    id: 'owasp',
+    icon: 'fa-solid fa-shield',
+    name: 'OWASP IoT Top 10',
+    url: 'https://owasp.org/www-project-internet-of-things/',
+    summary: 'El OWASP IoT Top 10 (2018) es la lista de referencia mundial que clasifica las diez vulnerabilidades más críticas presentes en dispositivos conectados. Cubre desde contraseñas débiles por defecto (I1) e interfaces de red inseguras (I2), hasta el uso de componentes desactualizados (I5), problemas de privacidad (I6) y transferencia de datos sin cifrar (I9). Cada categoría incluye vectores de ataque reales, ejemplos de explotación y contramedidas recomendadas para fabricantes y usuarios. Es el estándar de facto que organismos como NIST, ENISA e INCIBE adoptan como base para sus propias guías de seguridad IoT.',
+    translation: 'Este proyecto estructura todos sus consejos de seguridad, preguntas del test y referencias directamente sobre las categorías OWASP I1–I10. Si quieres comprender en profundidad por qué cada recomendación existe —con casos reales de dispositivos comprometidos— la fuente original es imprescindible. El sitio incluye además hojas de datos descargables y un repositorio activo con actualizaciones de la comunidad.'
+  },
+  {
+    id: 'incibe',
+    icon: 'fa-solid fa-building-shield',
+    name: 'INCIBE — IoT y sus riesgos',
+    url: 'https://www.incibe.es/ciudadania/blog/la-ciberseguridad-es-una-responsabilidad-de-todos-el-iot-y-sus-riesgos',
+    summary: 'El Instituto Nacional de Ciberseguridad de España (INCIBE) publica esta guía dirigida a ciudadanos y empresas, explicando cómo el crecimiento exponencial de dispositivos IoT amplía la superficie de ataque doméstica y corporativa. Describe amenazas concretas como el secuestro de cámaras IP, termostatos inteligentes convertidos en puertas de entrada a redes privadas, y el uso de wearables para recopilar datos personales sin consentimiento. INCIBE proporciona además un servicio gratuito de respuesta a incidentes (CERT) para ciudadanos afectados por brechas de seguridad en dispositivos conectados.',
+    translation: 'Al ser una fuente oficial del gobierno español, sus recomendaciones tienen validez jurídica dentro del marco del Esquema Nacional de Seguridad (ENS) y están alineadas con la regulación europea. Para quienes utilizan dispositivos IoT en España o Latinoamérica, esta guía ofrece el contexto legal y técnico local que los estándares internacionales no siempre cubren. Visita el enlace para acceder también a infografías y fichas prácticas descargables en español.'
+  },
+  {
+    id: 'nist',
+    icon: 'fa-solid fa-file-shield',
+    name: 'NIST IR 8228',
+    url: 'https://nvlpubs.nist.gov/nistpubs/IR/2020/NIST.IR.8228.pdf',
+    summary: 'El NIST Interagency Report 8228 (2020) es el documento técnico más completo del Instituto Nacional de Estándares y Tecnología de EE. UU. sobre gestión de riesgos IoT. Identifica tres grandes desafíos: la incapacidad de parchear dispositivos en campo, la dificultad de aplicar controles de acceso tradicionales, y la falta de visibilidad sobre el comportamiento del dispositivo en red. El informe propone un ciclo de vida de seguridad en tres fases —identificación de riesgos, protección y detección— y define 27 categorías de capacidades de ciberseguridad que deben evaluarse antes de desplegar cualquier dispositivo IoT en entornos críticos.',
+    translation: 'El NIST IR 8228 es la base técnica que justifica las preguntas del test de este proyecto relacionadas con actualizaciones de firmware y gestión de permisos. Su lectura completa (53 páginas) es altamente recomendada para estudiantes de ingeniería en sistemas o ciberseguridad, ya que ofrece el nivel de detalle técnico que los documentos divulgativos omiten. El PDF es de acceso gratuito y representa el estándar que el gobierno federal de EE. UU. exige en sus contratos de adquisición de tecnología IoT.'
+  },
+  {
+    id: 'iso',
+    icon: 'fa-solid fa-certificate',
+    name: 'ISO 30141',
+    url: 'https://www.iso.org/standard/65662.html',
+    summary: 'ISO/IEC 30141:2018 es el primer estándar internacional de arquitectura de referencia para el Internet de las Cosas, desarrollado conjuntamente por la Organización Internacional de Normalización (ISO) y la Comisión Electrotécnica Internacional (IEC). Define una ontología común para describir sistemas IoT mediante seis capas funcionales: percepción, conectividad, procesamiento, servicios, aplicación y negocio. Establece también los principios de confianza (Trustworthiness) que todo sistema IoT debe cumplir: seguridad, privacidad, protección, fiabilidad, resiliencia y disponibilidad. Este marco es utilizado por fabricantes, integradores de sistemas y reguladores como base de certificación de productos.',
+    translation: 'La arquitectura en capas del ISO 30141 explica por qué las vulnerabilidades IoT no son solo un problema del dispositivo individual, sino del ecosistema completo que lo rodea. Comprender este modelo permite al lector identificar en qué capa ocurre cada tipo de ataque descrito en este proyecto. Aunque el estándar completo requiere suscripción, la página oficial de ISO ofrece una vista previa gratuita del alcance y los objetivos que resulta suficiente para contextualizar el marco teórico.'
+  },
+  {
+    id: 'kaspersky',
+    icon: 'fa-solid fa-bug-slash',
+    name: 'Kaspersky — ¿Qué es IoT?',
+    url: 'https://latam.kaspersky.com/resource-center/definitions/what-is-iot',
+    summary: 'El centro de recursos de Kaspersky para Latinoamérica define el IoT como el ecosistema de dispositivos físicos embebidos con sensores, software y conectividad que intercambian datos sin intervención humana directa. El artículo describe los vectores de ataque más frecuentes observados en telemetría real de millones de dispositivos: ataques de fuerza bruta sobre Telnet y SSH, explotación de puertos abiertos no documentados, y la proliferación de variantes de la botnet Mirai. Incluye estadísticas actualizadas sobre el crecimiento de incidentes IoT y una sección específica sobre amenazas a dispositivos domésticos como routers, cámaras y asistentes de voz.',
+    translation: 'Kaspersky aporta a este proyecto la perspectiva forense de una empresa que analiza malware IoT en tiempo real a escala global. Sus datos de telemetría respaldan con evidencia empírica los riesgos descritos en las tarjetas de dispositivo, especialmente los relacionados con Bluetooth (BLESA), WiFi (Evil Twin) y botnets. El artículo está redactado en español latinoamericano, es gratuito y accesible sin registro, lo que lo convierte en un excelente punto de entrada para lectores sin formación técnica previa.'
+  },
+  {
+    id: 'gdpr',
+    icon: 'fa-solid fa-scale-balanced',
+    name: 'GDPR — Comisión Europea',
+    url: 'https://commission.europa.eu/law/topic/data-protection',
+    summary: 'El Reglamento General de Protección de Datos (GDPR, Reglamento UE 2016/679) es el marco legal europeo que regula el tratamiento de datos personales de ciudadanos de la UE, independientemente de donde operen las empresas que los procesan. Sus artículos más relevantes para IoT son: Art. 5 (principios de minimización de datos y limitación de propósito), Art. 6 (base legal para el tratamiento), Art. 9 (datos sensibles de salud, aplicable a wearables y smartwatches) y Art. 25 (privacidad desde el diseño). El incumplimiento puede derivar en multas de hasta 20 millones de euros o el 4% de la facturación global anual de la empresa infractora.',
+    translation: 'El GDPR es especialmente relevante para los usuarios de smartwatches y tablets de este proyecto, ya que estos dispositivos recopilan categorías de datos explícitamente protegidos: ubicación, biometría, patrones de sueño y frecuencia cardíaca. Conocer tus derechos bajo el GDPR —acceso, rectificación, supresión y portabilidad— te permite exigir a los fabricantes transparencia sobre qué datos recopilan y con quién los comparten. El portal de la Comisión Europea ofrece guías gratuitas en todos los idiomas oficiales de la UE.'
+  },
+  {
+    id: 'enisa',
+    icon: 'fa-solid fa-earth-europe',
+    name: 'ENISA Baseline IoT',
+    url: 'https://www.enisa.europa.eu/topics/iot-and-smart-infrastructures/iot',
+    summary: 'La Agencia de la Unión Europea para la Ciberseguridad (ENISA) publicó sus directrices de seguridad de referencia para IoT identificando 113 medidas de seguridad agrupadas en 10 dominios: seguridad del software, autenticación, criptografía, gestión de actualizaciones, privacidad, resiliencia física, entre otros. El informe diferencia entre requisitos de seguridad para fabricantes de dispositivos, proveedores de plataformas IoT y operadores de red, reconociendo que la responsabilidad es compartida. ENISA actualiza periódicamente sus directrices en respuesta a nuevas amenazas y las alinea con la Ley de Ciberresiliencia (CRA) de la UE, que entrará en vigor progresivamente hasta 2027.',
+    translation: 'Las directrices de ENISA representan el nivel de seguridad mínimo exigible a cualquier dispositivo IoT comercializado en Europa a partir de 2025. Para este proyecto, el dominio de gestión de actualizaciones y el de autenticación son los que mayor correspondencia tienen con las preguntas del test. Si planeas diseñar, comprar o desplegar dispositivos IoT en un entorno profesional o académico, el portal de ENISA ofrece acceso gratuito a todos sus informes técnicos, incluidos casos de estudio por sector industrial.'
+  },
+  {
+    id: 'checkpoint',
+    icon: 'fa-solid fa-network-wired',
+    name: 'Check Point — IoT Botnet',
+    url: 'https://blog.checkpoint.com/research/new-iot-botnet-storm-coming/',
+    summary: 'Check Point Research documentó en este informe la emergencia de una nueva generación de botnets IoT —sucesor evolutivo de Mirai— con capacidad para reclutar dispositivos domésticos (routers, DVRs, cámaras IP) y usarlos para lanzar ataques DDoS de más de 30 Gbps contra infraestructuras críticas. El análisis técnico incluye ingeniería inversa del código del malware, mapa de distribución geográfica de dispositivos infectados y la identificación de vulnerabilidades específicas explotadas en dispositivos Realtek y Huawei. Check Point detectó más de 400,000 intentos de infección en los primeros días tras el descubrimiento, con picos de actividad en regiones de América Latina.',
+    translation: 'Este informe aporta al proyecto la evidencia más contundente de por qué mantener el firmware actualizado y deshabilitar servicios de red innecesarios no es una recomendación teórica, sino una necesidad urgente: los dispositivos vulnerables son reclutados en cuestión de minutos tras conectarse a internet. El blog de Check Point Research es de acceso gratuito, incluye indicadores de compromiso (IoCs) y se actualiza con nuevas investigaciones semanalmente, convirtiéndolo en una fuente de inteligencia de amenazas de primer nivel.'
+  }
 ];
 
 /* ================================================================
@@ -302,7 +358,7 @@ function updateRiskUI() {
     label.textContent = '—';
     desc.textContent = 'Responde las preguntas para calcular tu nivel de riesgo';
     result.style.borderColor = 'var(--color-border)';
-    result.style.background = '#f8fafc';
+    result.style.background = '';  // CSS endstone texture takes over
     label.style.color = 'var(--color-muted)';
     return;
   }
@@ -312,21 +368,21 @@ function updateRiskUI() {
     label.style.color = 'var(--color-danger)';
     desc.textContent = `Puntuación de exposición: ${pct}/100. Tu dispositivo tiene configuraciones que lo ponen en riesgo grave. Actúa ahora.`;
     result.style.borderColor = 'var(--color-danger)';
-    result.style.background = 'rgba(239,68,68,0.05)';
+    result.style.background = 'rgba(180,40,30,0.45)';
   } else if (pct >= 20) {
     bar.style.backgroundColor = 'var(--color-warn)';
     label.textContent = '🟠 Riesgo MEDIO';
     label.style.color = 'var(--color-warn)';
     desc.textContent = `Puntuación de exposición: ${pct}/100. Hay aspectos de seguridad que mejorar. Consulta los consejos del dispositivo.`;
     result.style.borderColor = 'var(--color-warn)';
-    result.style.background = 'rgba(245,158,11,0.05)';
+    result.style.background = 'rgba(200,120,20,0.45)';
   } else {
     bar.style.backgroundColor = 'var(--color-accent)';
     label.textContent = '🟢 Riesgo BAJO';
     label.style.color = 'var(--color-accent)';
     desc.textContent = `Puntuación de exposición: ${pct}/100. ¡Bien! Sigues buenas prácticas de seguridad IoT. Sigue así.`;
     result.style.borderColor = 'var(--color-accent)';
-    result.style.background = 'rgba(16,185,129,0.05)';
+    result.style.background = 'rgba(30,120,60,0.45)';
   }
   updateQuestionCount();
 }
