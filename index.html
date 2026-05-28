@@ -28,6 +28,7 @@
   <!-- Capa semitransparente -->
   <div class="bg-overlay"></div>
 
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
   <div class="layout">
 
     <!-- SIDEBAR IZQUIERDO (videos) -->
@@ -52,6 +53,9 @@
         <div class="hero-badge"><i class="fa-solid fa-shield-halved"></i> Proyecto IoT — TecNM ITZACATEPEC</div>
         <h1>Seguridad en<br><span>Dispositivos IoT</span></h1>
         <p>Selecciona tu dispositivo para descubrir vulnerabilidades reales y buenas prácticas basadas en OWASP, GDPR, INCIBE y el modelo CIA.</p>
+        <button class="btn-learn-more" id="btn-learn-more">
+          <i class="fa-solid fa-magnifying-glass-chart"></i>&nbsp; Aprende más sobre tus dispositivos
+        </button>
       </section>
 
       <section>
@@ -238,6 +242,38 @@
       <button class="video-modal-close" id="video-modal-close"><i class="fa-solid fa-xmark"></i></button>
       <div class="video-modal-wrapper">
         <iframe id="video-modal-iframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal Buscar dispositivo -->
+  <div class="search-modal-overlay" id="search-modal" role="dialog" aria-modal="true">
+    <div class="search-modal-box">
+      <button class="search-modal-close" id="search-modal-close" aria-label="Cerrar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="search-modal-header">
+        <i class="fa-solid fa-magnifying-glass-chart"></i>
+        <h2>Aprende más sobre tus dispositivos</h2>
+      </div>
+      <div class="search-input-row">
+        <input
+          type="text"
+          id="search-device-input"
+          placeholder="Ej: Xiaomi Poco M5s, Samsung Galaxy Watch 6..."
+          maxlength="120"
+          autocomplete="off"
+        />
+        <button id="search-device-btn">
+          <i class="fa-solid fa-search"></i> Buscar
+        </button>
+      </div>
+      <div id="search-results">
+        <div class="search-hint">
+          <i class="fa-solid fa-shield-halved"></i>
+          Escribe el nombre de tu dispositivo y obtén enlaces a vulnerabilidades, actualizaciones y recursos de seguridad.
+        </div>
       </div>
     </div>
   </div>

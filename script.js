@@ -494,6 +494,202 @@ function initCollapse() {
 /* ================================================================
    INICIALIZACIÓN PRINCIPAL
 ================================================================ */
+
+/* ================================================================
+   BÚSQUEDA DE DISPOSITIVOS — "Aprende más"
+================================================================ */
+function buildSearchLinks(query) {
+  const q = encodeURIComponent(query);
+  const qPlain = query.trim();
+  return [
+    {
+      label: 'Vulnerabilidades en NVD (NIST)',
+      url: `https://nvd.nist.gov/vuln/search/results?query=${q}&results_type=overview`,
+      icon: 'fa-solid fa-file-shield',
+      section: 'vuln'
+    },
+    {
+      label: 'CVEs registrados — MITRE',
+      url: `https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=${q}`,
+      icon: 'fa-solid fa-bug',
+      section: 'vuln'
+    },
+    {
+      label: 'Noticias de seguridad recientes',
+      url: `https://news.google.com/search?q=${q}+seguridad+vulnerabilidad&hl=es`,
+      icon: 'fa-solid fa-newspaper',
+      section: 'update'
+    },
+    {
+      label: 'Actualizaciones del fabricante',
+      url: `https://www.google.com/search?q=${q}+actualizacion+firmware+seguridad+site:${qPlain.split(' ')[0].toLowerCase()}.com`,
+      icon: 'fa-solid fa-arrows-rotate',
+      section: 'update'
+    },
+    {
+      label: 'Ficha técnica — GSMArena',
+      url: `https://www.gsmarena.com/search.php3?sQuickSearch=1&sName=${q}`,
+      icon: 'fa-solid fa-mobile-screen-button',
+      section: 'link'
+    },
+    {
+      label: 'Exploit Database',
+      url: `https://www.exploit-db.com/search?q=${q}`,
+      icon: 'fa-solid fa-terminal',
+      section: 'vuln'
+    },
+    {
+      label: 'Shodan — dispositivos expuestos',
+      url: `https://www.shodan.io/search?query=${q}`,
+      icon: 'fa-solid fa-network-wired',
+      section: 'link'
+    },
+    {
+      label: 'Guía OWASP IoT aplicada',
+      url: `https://owasp.org/www-project-internet-of-things/`,
+      icon: 'fa-solid fa-shield',
+      section: 'link'
+    }
+  ];
+}
+
+function renderSearchResults(query) {
+  const container = document.getElementById('search-results');
+  if (!container) return;
+  const links = buildSearchLinks(query);
+
+  const sections = {
+    vuln:   { title: '🔴 Vulnerabilidades & CVEs',         cls: 'vuln' },
+    update: { title: '🟢 Actualizaciones & Noticias',      cls: 'update' },
+    link:   { title: '🔵 Recursos & Herramientas',         cls: 'link' }
+  };
+
+  const bySection = {};
+  links.forEach(l => {
+    if (!bySection[l.section]) bySection[l.section] = [];
+    bySection[l.section].push(l);
+  });
+
+  let html = `<div style="font-size:0.82rem;color:var(--color-muted);margin-bottom:0.5rem;">
+    Resultados para: <strong style="color:var(--color-accent)">${query}</strong>
+    &nbsp;·&nbsp; Haz clic para abrir en nueva pestaña
+  </div>`;
+
+  Object.entries(sections).forEach(([key, sec]) => {
+    if (!bySection[key]) return;
+    html += `<div class="search-section">
+      <div class="search-section-title ${sec.cls}">
+        ${sec.title}
+      </div>`;
+    bySection[key].forEach(link => {
+      html += `<a class="search-link-item" href="${link.url}" target="_blank" rel="noopener noreferrer">
+        <i class="${link.icon}"></i>
+        <span class="search-link-label">${link.label}</span>
+        <i class="fa-solid fa-arrow-up-right-from-square search-link-arrow"></i>
+      </a>`;
+    });
+    html += `</div>`;
+  });
+
+  container.innerHTML = html;
+}
+
+function openSearchModal() {
+  const modal = document.getElementById('search-modal');
+  if (modal) {
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => {
+      const input = document.getElementById('search-device-input');
+      if (input) input.focus();
+    }, 100);
+  }
+}
+
+function closeSearchModal() {
+  const modal = document.getElementById('search-modal');
+  if (modal) {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+
+function initSearchModal() {
+  const btnOpen  = document.getElementById('btn-learn-more');
+  const btnClose = document.getElementById('search-modal-close');
+  const btnSearch = document.getElementById('search-device-btn');
+  const input    = document.getElementById('search-device-input');
+  const overlay  = document.getElementById('search-modal');
+
+  if (btnOpen)  btnOpen.addEventListener('click', openSearchModal);
+  if (btnClose) btnClose.addEventListener('click', closeSearchModal);
+  if (overlay)  overlay.addEventListener('click', e => { if (e.target === overlay) closeSearchModal(); });
+
+  function doSearch() {
+    const query = input ? input.value.trim() : '';
+    if (!query) {
+      input.style.borderColor = 'var(--color-danger)';
+      setTimeout(() => input.style.borderColor = '', 800);
+      return;
+    }
+    renderSearchResults(query);
+  }
+
+  if (btnSearch) btnSearch.addEventListener('click', doSearch);
+  if (input) {
+    input.addEventListener('keydown', e => {
+      if (e.key === 'Enter') doSearch();
+    });
+  }
+}
+
+/* ================================================================
+   SIDEBARS MÓVIL — Drawer behavior
+================================================================ */
+function initMobileDrawers() {
+  if (window.innerWidth > 768) return;
+
+  const videoSidebar = document.getElementById('video-sidebar');
+  const mainSidebar  = document.getElementById('sidebar');
+  const backdrop     = document.getElementById('sidebar-backdrop');
+
+  function openDrawer(sidebar) {
+    sidebar.classList.add('mobile-open');
+    sidebar.classList.remove('collapsed');
+    if (backdrop) backdrop.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeAll() {
+    if (videoSidebar) videoSidebar.classList.remove('mobile-open');
+    if (mainSidebar)  mainSidebar.classList.remove('mobile-open');
+    if (backdrop) backdrop.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  const collapseVideoBtn = document.getElementById('collapse-video-btn');
+  const collapseMainBtn  = document.getElementById('collapse-main-btn');
+
+  if (collapseVideoBtn) {
+    collapseVideoBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      if (videoSidebar.classList.contains('mobile-open')) { closeAll(); }
+      else { closeAll(); openDrawer(videoSidebar); }
+    });
+  }
+  if (collapseMainBtn) {
+    collapseMainBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      if (mainSidebar.classList.contains('mobile-open')) { closeAll(); }
+      else { closeAll(); openDrawer(mainSidebar); }
+    });
+  }
+  if (backdrop) backdrop.addEventListener('click', closeAll);
+
+  // ESC cierra drawers
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAll(); });
+}
+
+
 document.addEventListener('DOMContentLoaded', () => {
   renderVideos();
   renderSources();
@@ -532,4 +728,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   updateRiskUI();
   updateQuestionCount();
+  initSearchModal();
+  initMobileDrawers();
 });
