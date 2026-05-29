@@ -521,8 +521,9 @@ function buildSearchLinks(query) {
       section: 'update'
     },
     {
-      label: 'Actualizaciones del fabricante',
-      url: `https://www.google.com/search?q=${q}+actualizacion+firmware+seguridad+site:${qPlain.split(' ')[0].toLowerCase()}.com`,
+      label: 'BleepingComputer — Noticias de seguridad',
+      url: `https://www.bleepingcomputer.com/search/?q=${q}`,
+      icon: 'fa-solid fa-newspaper',
       icon: 'fa-solid fa-arrows-rotate',
       section: 'update'
     },
